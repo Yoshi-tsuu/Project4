@@ -9,7 +9,6 @@ import java.util.Properties;
 
 public class PolaczenieBaza {
     private static final String CONFIG_FILE = "config.properties";
-
     static {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -17,7 +16,6 @@ public class PolaczenieBaza {
             throw new RuntimeException("Błąd");
         }
     }
-
     public static Connection getConnection() throws SQLException {
         Properties properties = new Properties();
         try {
