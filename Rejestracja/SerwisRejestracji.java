@@ -15,9 +15,7 @@ public class SerwisRejestracji {
             System.err.println("Błąd w pliku konfiguracyjnym  " + e.getMessage());
             return;
         }
-
         int registrationPort = Integer.parseInt(properties.getProperty("registration.service.port"));
-
         try (ServerSocket serverSocket = new ServerSocket(registrationPort)) {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
