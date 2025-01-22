@@ -26,14 +26,12 @@ public class Pliki implements Runnable {
                 String destinationnazwaPliku = requestFile[1];
                 String encodedFile = requestFile[2];
                 byte[] fileBytes = Base64.getDecoder().decode(encodedFile);
-
                 String destinationPath = System.getProperty("user.home") + File.separator + destinationnazwaPliku;
                 Files.write(Paths.get(destinationPath), fileBytes);
                 output.println("200;Plik wgrany.");
             } else if (requestFile[0].equals("pobierz_plik")) {
                 String nazwaPliku = requestFile[2];
                 String sciezkaPliku = System.getProperty("user.home") + File.separator + nazwaPliku;
-
                 Path path = Paths.get(sciezkaPliku);
                 if (Files.exists(path)) {
                     byte[] fileBytes = Files.readAllBytes(path);
