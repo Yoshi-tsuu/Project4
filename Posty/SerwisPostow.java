@@ -15,9 +15,7 @@ public class SerwisPostow {
             System.err.println("Błąd pliku konfiguracyjnego." + e.getMessage());
             return;
         }
-
         int postPort = Integer.parseInt(properties.getProperty("post.service.port"));
-
         try (ServerSocket serverSocket = new ServerSocket(postPort)) {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
