@@ -23,21 +23,18 @@ public class Login implements Runnable {
     public void run() {
         try (BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)) {
-
             String request = input.readLine();
             String[] userData = request.split(";");
             if (userData.length != 3) {
                 output.println("Nieprawidłowe dane uwierzytelniające.");
                 return;
             }
-
             String username = userData[1];
             String password = userData[2];
             try (Connection connection = BaseConnection.getConnection()) {
                 PreparedStatement checkUserStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
                 checkUserStatement.setString(1, username);
                 ResultSet resultSet = checkUserStatement.executeQuery();
-
                 if (resultSet.next()) {
 
                     if (resultSet.getString("password").equals(password)) {
