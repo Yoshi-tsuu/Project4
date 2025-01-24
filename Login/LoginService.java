@@ -15,9 +15,7 @@ public class LoginService {
             System.err.println("Błąd ładowania pliku konfiguracyjnego");
             return;
         }
-
         int loginPort = Integer.parseInt(properties.getProperty("login.service.port"));
-
         try (ServerSocket serverSocket = new ServerSocket(loginPort)) {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
