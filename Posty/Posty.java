@@ -12,11 +12,9 @@ import java.sql.SQLException;
 
 public class Posty implements Runnable {
     private final Socket clientSocket;
-
     public Posty(Socket clientSocket) {
         this.clientSocket = clientSocket;
     }
-
     @Override
     public void run() {
         try (BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
