@@ -1,7 +1,6 @@
 package Login;
 
 import Posty.PolaczenieBaza;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,11 +13,9 @@ import java.sql.SQLException;
 
 public class Login implements Runnable {
     private final Socket clientSocket;
-
     public Login(Socket clientSocket) {
         this.clientSocket = clientSocket;
     }
-
     @Override
     public void run() {
         try (BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -36,7 +33,6 @@ public class Login implements Runnable {
                 checkUserStatement.setString(1, username);
                 ResultSet resultSet = checkUserStatement.executeQuery();
                 if (resultSet.next()) {
-
                     if (resultSet.getString("password").equals(password)) {
                         output.println("200;Zalogowano");
                     } else {
