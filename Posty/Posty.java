@@ -15,6 +15,7 @@ public class Posty implements Runnable {
     public Posty(Socket clientSocket) {
         this.clientSocket = clientSocket;
     }
+    
     @Override
     public void run() {
         try (BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
