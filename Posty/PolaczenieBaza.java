@@ -16,7 +16,6 @@ public class PolaczenieBaza {
             throw new RuntimeException("Błąd");
         }
     }
-
     public static Connection getConnection() throws SQLException {
         Properties properties = new Properties();
         try {
