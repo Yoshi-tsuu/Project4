@@ -9,19 +9,15 @@ import java.util.Base64;
 
 public class Pliki implements Runnable {
     private final Socket clientSocket;
-
     public Pliki(Socket clientSocket) throws IOException {
         this.clientSocket = clientSocket;
     }
-
     @Override
     public void run() {
-
         try (BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true)) {
             String request = input.readLine();
             String[] requestFile = request.split(";");
-
             if (requestFile[0].equals("wgraj_plik")) {
                 String destinationnazwaPliku = requestFile[1];
                 String encodedFile = requestFile[2];
